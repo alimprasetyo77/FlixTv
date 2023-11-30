@@ -6,7 +6,7 @@ module.exports = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
-	],
+  ],
   theme: {
     container: {
       center: true,
@@ -16,6 +16,11 @@ module.exports = {
       },
     },
     extend: {
+      colors: {
+        primary: "#131720",
+        font: "#2f80ed",
+        primar: "rgba(19, 23, 32, 0.82)"
+      },
       keyframes: {
         "accordion-down": {
           from: { height: 0 },
