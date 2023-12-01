@@ -1,44 +1,24 @@
 "use client";
 import { Movie } from "@/lib/apis/movie/types";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-
-interface props {
-  data: string[];
+import React from "react";
+interface CarouselProps {
+  data: Movie[];
 }
-
-const Carousel = ({ data }: props) => {
-  const [sizeImg, setSizeImg] = useState(0);
-
-  const prev = () => {
-    setSizeImg((sizeImg) => (sizeImg === 0 ? data.length - 1 : sizeImg - 1));
-  };
-  const next = () => {
-    setSizeImg((sizeImg) => (sizeImg === data.length - 1 ? 0 : sizeImg + 1));
-  };
-  useEffect(() => {
-    const slide = setInterval(next, 1000);
-    return () => {
-      clearInterval(slide);
-    };
-  }, []);
-
+const Carousel = ({ data }: CarouselProps) => {
   return (
-    <div className="container relative flex gap-x-12 borders justify-between">
-      <span className="text-4xl text-red-500 z-0 fixed">{sizeImg}</span>
-      <div className={`flex items-center gap-x-10  transition-transform ease-out duration-500`}>
-        {data.map((value, index) => (
-          <Image
-            key={index}
-            src={`https://image.tmdb.org/t/p/original${value}`}
-            alt={value}
-            width={300}
-            height={300}
-            style={{ transform: `translateX(-${sizeImg * 100} %)` }}
-            className={`aspect-[3/4] w-auto h-auto object-cover rounded-lg`}
-          />
-        ))}
-      </div>
+    <div className="flex  items-center  gap-10 snap-mandatory snap-x overflow-x-visible py-10 -translate-x-1/2">
+      {data.map((value) => (
+        <div
+          className="relative space-y-4  snap-start min-w-[400px] min-h-[350px] bg-cover bg-center rounded-xl"
+          style={{
+            backgroundImage: `url(https://image.tmdb.org/t/p/w500${value.backdrop_path})`,
+          }}>
+          <h1 className="absolute bottom-2 right-1/2 translate-x-1/2 text-xl font-semibold text-center ">
+            {value.original_title}
+          </h1>
+        </div>
+      ))}
     </div>
   );
 };

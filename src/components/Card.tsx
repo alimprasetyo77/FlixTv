@@ -8,8 +8,9 @@ import { useState } from "react";
 interface CardProps {
   data: Movie;
   href: string;
+  bookmarkActive?: boolean;
 }
-const Card = ({ data, href }: CardProps) => {
+const Card = ({ data, href, bookmarkActive }: CardProps) => {
   const [onHover, setOnHover] = useState(false);
   return (
     <div className="flex flex-col items-center ">
@@ -19,9 +20,8 @@ const Card = ({ data, href }: CardProps) => {
           onMouseEnter={() => setOnHover(true)}
           onMouseLeave={() => setOnHover(false)}>
           <Image
-            className={`aspect-[3/4] object-cover duration-300 min-w-[300px] ${
-              onHover ? "blur-sm scale-105" : "blur-0 scale-100"
-            }`}
+            className={`aspect-[3/4] object-cover duration-300 max-w-[300px] 
+            ${onHover ? "blur-sm scale-105" : "blur-0 scale-100"}`}
             src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
             alt={data.title}
             width={500}
@@ -34,14 +34,16 @@ const Card = ({ data, href }: CardProps) => {
             } transition-opacity duration-500`}
           />
           <button
-            className={`text-font absolute p-2 bg-primary rounded-full top-2 left-2 hover:text-amber-500 ${
-              onHover ? "opacity-100" : "opacity-0"
+            className={`${
+              bookmarkActive ? "text-amber-500 hover:text-font" : "text-font hover:text-amber-500"
+            } absolute p-2 bg-primary rounded-full top-2 left-2 ${
+              onHover || bookmarkActive ? "opacity-100" : "opacity-0"
             } transition-opacity duration-500`}>
             <Bookmark />
           </button>
         </div>
         <div className="text-center group-hover:text-font  duration-500 text-primary dark:text-white  font-medium text-lg">
-          {data.title}
+          <span>{data.title}</span>
         </div>
       </Link>
     </div>
