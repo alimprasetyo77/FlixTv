@@ -1,5 +1,6 @@
 import Card from "@/components/Card";
-import Carousel from "@/components/Carousel";
+import UpComing from "@/components/UpComing";
+import Carousel from "@/components/UpComing";
 import { getMovieUpComing, getMoviesNowPlaying } from "@/lib/apis/movie/api";
 import { Metadata } from "next";
 import { Rubik } from "next/font/google";
@@ -16,10 +17,7 @@ export default async function Home() {
   return (
     <main className="bg-slate-100  dark:bg-primary min-h-screen overflow-hidden">
       <section id="upComing">
-        <div className="container space-y-5 py-10">
-          <h1 className={`text-4xl text-primary dark:text-white ${rubik.className}`}>Up Coming</h1>
-          <Carousel data={upComingMovies.results} />
-        </div>
+        <UpComing data={upComingMovies.results} />
       </section>
       <section id="now-playing">
         <div className="container space-y-5 py-10">
