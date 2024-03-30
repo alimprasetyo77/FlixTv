@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.searchBar::-webkit-scrollbar {
+    width: 0.40rem;
+    height: 0.25rem;
+    }
+
+
+  .searchBar::-webkit-scrollbar-thumb {
+      background-color: rgb(107, 107, 111);
+      border-radius: 30px;
+  }

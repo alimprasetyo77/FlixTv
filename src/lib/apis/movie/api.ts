@@ -7,24 +7,31 @@ export const getMoviesNowPlaying = async () => {
     const response = await axiosWithConfig.get(`/movie/now_playing`);
     return response.data as Response;
   } catch (error) {
-    throw Error("Failed to get now playing movies")
+    throw Error("Failed to get now playing movies");
   }
 };
-
+export const getMoviesByKeyword = async (keyword: string) => {
+  try {
+    const response = await axiosWithConfig.get(
+      `/search/movie?query=${keyword}&include_adult=false&language=en-US`
+    );
+    return response.data as Response;
+  } catch (error) {
+    throw Error("Movies Not Found.");
+  }
+};
 export const getMovieUpComing = async () => {
   try {
     const response = await axiosWithConfig.get(`/movie/upcoming`);
     return response.data as Response;
   } catch (error) {
-    throw Error("Failed to get upcoming movies")
+    throw Error("Failed to get upcoming movies");
   }
 };
 
 export const getDetailMovie = async (movie_id: string) => {
   try {
-    const response = await axiosWithConfig.get(
-      `/movie/${movie_id}?append_to_response=videos`
-    );
+    const response = await axiosWithConfig.get(`/movie/${movie_id}?append_to_response=videos`);
 
     return response.data as MovieDetail;
   } catch (error: any) {
@@ -40,10 +47,7 @@ export const getSimilarMovies = async (movie_id: string) => {
     throw Error("Failed to get similar movies");
   }
 };
-export const getFavoriteMovies = async (
-  user_id: string,
-  session_id: string
-) => {
+export const getFavoriteMovies = async (user_id: string, session_id: string) => {
   try {
     const response = await axiosWithConfig.get(
       `/account/${user_id}/favorite/movies?sort_by=created_at.desc&session_id=${session_id}`

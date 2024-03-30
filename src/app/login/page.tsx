@@ -46,11 +46,19 @@ const Login = () => {
       className="min-h-screen w-full  flex items-center justify-center bg-cover bg-center bg-[url('https://flixtv.volkovdesign.com/main/img/bg.jpg')]"
       style={{
         backgroundImage: `url(https://flixtv.volkovdesign.com/main/img/bg.jpg)`,
-      }}>
+      }}
+    >
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="max-w-md w-full flex flex-col place-items-center gap-y-6 bg-primary shadow-lg p-10 rounded-2xl">
-        <Image src={"https://flixtv.volkovdesign.com/main/img/logo.svg"} width={90} height={90} alt="image" />
+        className="max-w-md w-full flex flex-col place-items-center gap-y-6 bg-primary shadow-lg p-10 rounded-2xl"
+      >
+        <Image
+          src={"https://flixtv.volkovdesign.com/main/img/logo.svg"}
+          width={90}
+          height={90}
+          alt="image"
+        />
+        <p className="text-sm text-slate-200/50">Log in using your TMDB account.</p>
         <div className="flex flex-col items-start gap-y-6 w-full">
           <input
             className="py-3 px-5 bg-[#151f30] rounded-2xl text-white text-sm w-full outline-none focus:ring duration-300"
@@ -69,7 +77,10 @@ const Login = () => {
           {errors && <p className="text-xs -mt-2 ml-2 text-rose-500">{errors.password?.message}</p>}
 
           <div className="flex gap-x-4">
-            <input className="py-1 px-5 ml-4 bg-[#151f30] rounded-2xl text-white text-sm" type="checkbox" />
+            <input
+              className="py-1 px-5 ml-4 bg-[#151f30] rounded-2xl text-white text-sm"
+              type="checkbox"
+            />
             <label htmlFor="remember-me" className="text-sm">
               Remember me
             </label>
