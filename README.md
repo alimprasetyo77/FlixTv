@@ -7,7 +7,7 @@
 ![App Screenshot](https://github.com/alimprasetyo77/FlixTv/blob/main/public/detail-movie.png)
 
 ## 🛠️ Tech Stacks
-- [Nextjs Typescript]([https://vitejs.dev/guide/](https://nextjs.org/](https://nextjs.org/docs))
+- [Nextjs Typescript](https://nextjs.org/docs)
 - [Tailwindcss](https://tailwindcss.com/)
 - [Shadcn-ui](https://ui.shadcn.com/)
 - [Zod](https://zod.dev/)
