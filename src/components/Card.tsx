@@ -12,15 +12,17 @@ interface CardProps {
 }
 const Card = ({ data, href, bookmarkActive }: CardProps) => {
   const [onHover, setOnHover] = useState(false);
+  console.log(data);
   return (
     <div className="flex flex-col items-center ">
       <Link href={href} className=" space-y-4 group ">
         <div
           className="overflow-hidden relative "
           onMouseEnter={() => setOnHover(true)}
-          onMouseLeave={() => setOnHover(false)}>
+          onMouseLeave={() => setOnHover(false)}
+        >
           <Image
-            className={`aspect-[3/4] object-cover duration-300 max-w-[300px] 
+            className={`aspect-[3/4] object-cover duration-300 max-w-[300px]
             ${onHover ? "blur-sm scale-105" : "blur-0 scale-100"}`}
             src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
             alt={data.title}
@@ -38,7 +40,8 @@ const Card = ({ data, href, bookmarkActive }: CardProps) => {
               bookmarkActive ? "text-amber-500 hover:text-font" : "text-font hover:text-amber-500"
             } absolute p-2 bg-primary rounded-full top-2 left-2 ${
               onHover || bookmarkActive ? "opacity-100" : "opacity-0"
-            } transition-opacity duration-500`}>
+            } transition-opacity duration-500`}
+          >
             <Bookmark />
           </button>
         </div>
